@@ -5,24 +5,24 @@ const dishRouter = express.Router();
 
 dishRouter.use(bodyParser.json());
 
-dishRouter.route('/')
+dishRouter.route('/:dishId')
 .all((req,res,next) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
     next();
 })
 .get((req,res,next) => {
-    res.end('Will send all the dishes to you!');
+    res.end('Will GET the current dish');
 })
 .post((req, res, next) => {
-    res.end('Will add the dish: ' + req.body.name + ' with details: ' + req.body.description);
+    res.end('Will CREATE the current dish');
 })
 .put((req, res, next) => {
-    res.statusCode = 403;
-    res.end('PUT operation not supported on /dishes');
+    //res.statusCode = 403;
+    res.end('Will UPDATE the current dish');
 })
 .delete((req, res, next) => {
-    res.end('Deleting all dishes');
+    res.end('Will DELETE the current dish');
 });
 
 module.exports = dishRouter;
